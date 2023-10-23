@@ -7,7 +7,7 @@ nextjs 에서 이미지와 같은 정적인 컨텐츠를 사용하기 위해서�
 ### 절차
 
 1. public 폴더에 이미지를 삽입(hello.png)
-2. app/page.js 에서 /hello.png를 이용해서 사용
+2. `app/page.js` 에서 `/hello.png`를 이용해서 사용
 
 ```js
 export default function Home() {
