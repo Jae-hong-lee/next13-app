@@ -20,9 +20,9 @@ export default function Create() {
 
         const resp = await fetch("http://localhost:9999/topics/", options);
         const topic = await resp.json();
-        // console.log("file: page.js:19 ~ Create ~ topic:", topic);
-        router.push(`/read/${topic.id}`);
+
         router.refresh();
+        router.push(`/read/${topic.id}`);
       }}
     >
       <h2>Create</h2>
