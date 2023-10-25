@@ -17,12 +17,11 @@ export default function Create() {
           },
           body: JSON.stringify({ title, body }),
         };
-
         const resp = await fetch("http://localhost:9999/topics/", options);
         const topic = await resp.json();
-
-        router.refresh();
+        console.log("file: page.js:19 ~ Create ~ topic:", topic);
         router.push(`/read/${topic.id}`);
+        router.refresh();
       }}
     >
       <h2>Create</h2>
