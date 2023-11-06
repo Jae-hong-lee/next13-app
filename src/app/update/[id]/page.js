@@ -16,7 +16,7 @@ export default function Update() {
         setTitle(result.title);
         setBody(result.body);
       });
-  });
+  }, []);
 
   return (
     <form
@@ -31,7 +31,10 @@ export default function Update() {
           },
           body: JSON.stringify({ title, body }),
         };
-        const resp = await fetch("http://localhost:9999/topics/" + id, options);
+        const resp = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + `topics/` + id,
+          options
+        );
         const topic = await resp.json();
         console.log(topic.id);
         router.push(`/read/${topic.id}`);
@@ -44,16 +47,16 @@ export default function Update() {
           type="text"
           name="title"
           placeholder="title"
-          value={title}
           onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
       </p>
       <p>
         <textarea
           name="body"
           placeholder="body"
-          value={body}
           onChange={(e) => setBody(e.target.value)}
+          value={body}
         ></textarea>
       </p>
       <p>

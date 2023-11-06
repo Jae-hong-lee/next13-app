@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function Control() {
   const params = useParams();
@@ -23,7 +23,9 @@ export function Control() {
               value="delete"
               onClick={() => {
                 const options = { method: "DELETE" };
-                fetch("http://localhost:9999/topics/" + id, options)
+                // process.env.NEXT_PUBLIC_API_URL + `topics`
+                // "http://localhost:9999/topics/"
+                fetch(process.env.NEXT_PUBLIC_API_URL + `topics/` + id, options)
                   .then((resp) => resp.json())
                   .then((result) => {
                     router.push("/");

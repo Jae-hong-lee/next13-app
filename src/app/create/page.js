@@ -17,7 +17,10 @@ export default function Create() {
           },
           body: JSON.stringify({ title, body }),
         };
-        const resp = await fetch("http://localhost:9999/topics/", options);
+        const resp = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + `topics`,
+          options
+        );
         const topic = await resp.json();
         console.log("file: page.js:19 ~ Create ~ topic:", topic);
         router.push(`/read/${topic.id}`);
